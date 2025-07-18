@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Third Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="mainstyle.css" />
+</head>
+<body>
+  <div class="container mt-5">
+    <h1><span id="specificColor">Contact us</span></h1>
+
+    <form id="registrationForm" novalidate>
+   
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+        <label for="floatingInput">Email address</label>
+        <div class="invalid-feedback" id="emailError">Email is required.</div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingName" placeholder="Your name" />
+        <label for="floatingName">First and Last name</label>
+        <div class="invalid-feedback" id="nameError">Name is required.</div>
+      </div>
+
+      <h3><span id="specificColor">Do you accept our T.O.S?</span></h3>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">
+          <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="firstRadio" required />
+          <label class="form-check-label" for="firstRadio">Yes</label>
+        </li>
+        <li class="list-group-item">
+          <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="secondRadio" />
+          <label class="form-check-label" for="secondRadio">No</label>
+        </li>
+      </ul>
+
+
+      <div class="col-2">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+
+      <div id="finalResult" class="mt-3"></div>
+    </form>
+
+   <br />
+    <a href="PaisleyI.html" style="text-decoration:none" target="_blank">First page</a>
+    <br />
+    <a href="secondpage.html" style="text-decoration:none" target="_blank">Second Page</a>
+     </div> 
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const emailInput = document.getElementById("floatingInput");
+      const nameInput = document.getElementById("floatingName");
+      const emailError = document.getElementById("emailError");
+      const nameError = document.getElementById("nameError");
+      const result = document.getElementById("finalResult");
+      const tosAccepted = document.getElementById("firstRadio").checked;
+
+      let isValid = true;
+
+      result.innerHTML = "";
+      emailInput.classList.remove("is-invalid");
+      nameInput.classList.remove("is-invalid");
+      emailError.style.display = "none";
+      nameError.style.display = "none";
+
+      if (emailInput.value.trim() === "") {
+        emailInput.classList.add("is-invalid");
+        emailError.style.display = "block";
+        isValid = false;
+      }
+
+      if (nameInput.value.trim() === "") {
+        nameInput.classList.add("is-invalid");
+        nameError.style.display = "block";
+        isValid = false;
+      }
+      if (!tosAccepted) {
+        result.innerHTML = '<div class="alert alert-danger">You must accept the T.O.S to continue.</div>';
+        isValid = false;
+      }
+
+      if (isValid) {
+        result.innerHTML = '<div class="alert alert-success">Form submitted successfully!</div>';
+      }
+    });
+  </script>
+
+
+</body>
+</html>
