@@ -1,0 +1,16 @@
+ span {
+  color: rgb(68, 8, 8);
+  background-color: rgb(255, 255, 255);
+}
+
+span.maroonColor{
+        color:maroon;
+        font-family:arial;
+        font-size:24px;
+    }
+
+    #specificColor {
+  color: rgb(104, 13, 59);
+  font-family: trebuchet;
+  font-size: 28px;
+}
